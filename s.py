@@ -10,6 +10,7 @@ while True:
 	child = os.fork()
 	if child == 0:
 		data = conn.recv(1024)
+		conn.send(data.upper())
 		conn.close()
 		sys.exit()
   	else:
