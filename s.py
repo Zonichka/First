@@ -16,4 +16,4 @@ while True:
   	else:
 		conn.close()
 
-server_socket.close()
+s.close()
