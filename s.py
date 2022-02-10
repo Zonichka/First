@@ -1,9 +1,10 @@
 import socket
 import os
 import sys
+import threading
 
 
-def server(conn):
+def server(conn, addr):
     while True:
         data = conn.recv(1024)
         if (data == b'close') or (not data):
@@ -18,7 +19,7 @@ s.listen(10)
 while True:
     conn, addr = s.accept()
     print("Connection", addr)
-    t = threading.Thread(target=server(conn), args=(conn, addr))
+    t = threading.Thread(target=server, args=(conn, addr))
     t.start()
 
 s.close()
